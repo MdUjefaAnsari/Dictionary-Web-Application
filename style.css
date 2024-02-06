@@ -151,7 +151,21 @@ form:hover #search-input{
     transition: 0.4s ease-in-out;
 }
 
-.userWord{
+.partOfSpeech{
+    color: #7811a7;
+    font-size: 18px;
+}.partOfSpeech1{
+    color: #7811a7;
+    font-size: 18px;
+}
+.voice{
+    display: flex;
+    padding: 5px 15px;
+    color: #0b6bd2;
+    font-size: 20px;
+}
+.contentAudio{
+    display: flex;
     color: #7811a7;
 }
 

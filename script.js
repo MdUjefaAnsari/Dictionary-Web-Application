@@ -7,7 +7,8 @@ const getData = async () => {
   if (inputData === "") {
     document.querySelector(".err").innerHTML = "* Please Enter a word !";
   } else if (!inputData.match(pattern)) {
-    document.querySelector(".err").innerHTML = "* Please provide only word avoid also spaces !";
+    document.querySelector(".err").innerHTML =
+      "* Please provide only word avoid also spaces !";
     return false;
   } else {
     document.querySelector(".err").innerHTML = "";
@@ -16,15 +17,31 @@ const getData = async () => {
     let data = await response.json();
     console.log(data);
     document.querySelector(".userWord").innerText = data[0].word;
-  //  ---------------for audio voice ----start------------------ 
+    //  ---------------for audio voice ----start------------------
     const voiceAudio = data[0]?.phonetics[0]?.audio;
+    const voiceElement = document.querySelector(".voice");
+
     if (voiceAudio) {
-     const voiceElement= document.querySelector(".voice")
-      voiceElement.innerHTML = `<audio controls src="${voiceAudio}"></audio>`;
-    }else{ 
-       document.querySelector(".voice").innerHTML =""
+      voiceElement.innerHTML = `
+    <div>
+      <i class="fas fa-volume-up" id="playIcon" style="cursor: pointer;"></i>
+      <audio src="${voiceAudio}" style="display: none;" controls id="audioPlayer"></audio>
+    </div>`;
+      const playIcon = document.getElementById("playIcon");
+      const audioPlayer = document.getElementById("audioPlayer");
+
+      playIcon.addEventListener("click", () => {
+        if (audioPlayer.paused) {
+          audioPlayer.play(); 
+        } else {
+          audioPlayer.pause();
+        }
+      });
+    } else {
+      voiceElement.innerHTML = "";
     }
-    // /  ---------------for audio voice ----end------------------ 
+
+    // /  ---------------for audio voice ----end------------------
 
     document.querySelector(".partOfSpeech").innerText =
       data[0].meanings[0].partOfSpeech + ",";
@@ -34,10 +51,14 @@ const getData = async () => {
       "2.    " + data[0].meanings[0].definitions[1].definition;
     document.querySelector(".difination3").innerText =
       "3.    " + data[0].meanings[0].definitions[2].definition;
-      document.querySelector(".example").innerText =
-      "Example: " + data[0].meanings[0].definitions[0].example;
 
-    // -------------------------------------------
+    const example = data[0].meanings[0].definitions[0].example;
+    if (example) {
+      document.querySelector(".example").innerText = `Example: ${example}`;
+    } else {
+      document.querySelector(".example").innerText = "";
+    }
+    // --------------------------another parts of speech-----------------
     document.querySelector(".partOfSpeech1").innerText =
       data[0].meanings[1].partOfSpeech + ",";
     document.querySelector(".difination4").innerText =

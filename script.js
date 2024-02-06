@@ -5,9 +5,9 @@ const getData = async () => {
   let inputData = searchInput.value;
   const pattern = /^[a-zA-Z]+$/;
   if (inputData === "") {
-    document.querySelector(".err").innerHTML = "*Please Enter a word!";
+    document.querySelector(".err").innerHTML = "* Please Enter a word !";
   } else if (!inputData.match(pattern)) {
-    document.querySelector(".err").innerHTML = "*Please provide only word avoid also spaces !";
+    document.querySelector(".err").innerHTML = "* Please provide only word avoid also spaces !";
     return false;
   } else {
     document.querySelector(".err").innerHTML = "";

@@ -200,10 +200,6 @@ form:hover #search-input{
     .search-results {
         padding: 20px;
     }
-    .logo img{
-        margin-left: -100px;
-    }
-
     .search-result {
         width: 45%;
     }
@@ -213,8 +209,11 @@ form:hover #search-input{
     .search-result {
         width: 100%;
     }
+    .newHead{
+        max-width: 370px;
+    }
     .topheading{
-        margin-top: -50px;
+        margin-top: -30px;
     }
 }
 

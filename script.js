@@ -17,6 +17,14 @@ const getData = async () => {
     let data = await response.json();
     console.log(data);
     document.querySelector(".userWord").innerText = data[0].word;
+    document.querySelector(".phonetic").innerText = `[ ${data[0].phonetic} ]`;
+    
+    const synonyms = data[0].meanings[0].synonyms;
+    if (synonyms) {
+      document.querySelector(".synonyms").innerText = `Synonyms: ${synonyms}`;
+    } else {
+      document.querySelector(".synonyms").innerText = "";
+    }
     //  ---------------for audio voice ----start------------------
     const voiceAudio = data[0]?.phonetics[0]?.audio;
     const voiceElement = document.querySelector(".voice");
@@ -32,16 +40,14 @@ const getData = async () => {
 
       playIcon.addEventListener("click", () => {
         if (audioPlayer.paused) {
-          audioPlayer.play(); 
+          audioPlayer.play();
         } else {
           audioPlayer.pause();
         }
       });
     } else {
       voiceElement.innerHTML = "";
-    }
-
-    // /  ---------------for audio voice ----end------------------
+    } //  ---------------for audio voice ----end------------------
 
     document.querySelector(".partOfSpeech").innerText =
       data[0].meanings[0].partOfSpeech + ",";

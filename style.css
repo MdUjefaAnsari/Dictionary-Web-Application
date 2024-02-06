@@ -53,19 +53,21 @@ form {
     align-items: center;
     
 }
-.topBar a{
+
+.linkGit {
 padding: 11px;
-text-decoration: none;
 font-size: 40px;
 color: #cc015c;
 text-align: center;
 align-items: center;
 justify-content: center;
 display: flex;
-
+}
+.linkGit a{
+    text-decoration: none;
 }
 .topBar a span{
-    font-size: 20px;
+    font-size: 25px;
     color: rgb(78, 212, 0);
     margin: 10px;
 }
@@ -168,10 +170,22 @@ form:hover #search-input{
     display: flex;
     color: #7811a7;
 }
-
+.contentAudio .userWord{
+    font-size: 25px;
+}
+.phonetic{
+    padding: 5px 15px;
+    font-size: 20px;
+    color: #388504;
+}
+.synonyms{
+    color: #c90a5a;
+    font-size:20px;
+    margin-bottom: 10px;
+}
 
 .heading {
-    font-size: 19px;
+    font-size: 22px;
     color: #333;
     display: block;
     padding: 0px 10px 0px 10px;

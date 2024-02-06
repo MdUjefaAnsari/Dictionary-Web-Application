@@ -209,6 +209,9 @@ form:hover #search-input{
     .search-result {
         width: 100%;
     }
+    footer{
+        font-size: 16px;
+    }
     .newHead{
         max-width: 370px;
     }

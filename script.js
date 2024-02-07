@@ -21,11 +21,13 @@ const getData = async () => {
 
     const synonyms = data[0].meanings[0].synonyms;
     const elementSyno =  document.querySelector(".synonyms")
-    if (synonyms) {
+    if (synonyms.length>0) {
       elementSyno.textContent = `Synonyms: ${synonyms}`
+
     } else{
-      elementSyno.textContent = '';
+      elementSyno.textContent = 'Not found synonyms';
     }
+    console.log(synonyms);
 
     //  ---------------for audio voice ----start------------------
     const voiceAudio = data[0]?.phonetics[0]?.audio;

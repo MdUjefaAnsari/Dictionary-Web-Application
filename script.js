@@ -18,13 +18,15 @@ const getData = async () => {
     console.log(data);
     document.querySelector(".userWord").innerText = data[0].word;
     document.querySelector(".phonetic").innerText = `[ ${data[0].phonetic} ]`;
-    
+
     const synonyms = data[0].meanings[0].synonyms;
+    const elementSyno =  document.querySelector(".synonyms")
     if (synonyms) {
-      document.querySelector(".synonyms").innerText = `Synonyms: ${synonyms}`;
-    } else {
-      document.querySelector(".synonyms").innerText = "";
+      elementSyno.textContent = `Synonyms: ${synonyms}`
+    } else{
+      elementSyno.textContent = '';
     }
+
     //  ---------------for audio voice ----start------------------
     const voiceAudio = data[0]?.phonetics[0]?.audio;
     const voiceElement = document.querySelector(".voice");

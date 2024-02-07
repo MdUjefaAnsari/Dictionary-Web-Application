@@ -56,18 +56,22 @@ form {
 
 .linkGit {
 padding: 11px;
-font-size: 40px;
-color: #cc015c;
+font-size: 33px;
 text-align: center;
 align-items: center;
 justify-content: center;
 display: flex;
 }
+.linkGit .github{
+    color: #f2f2f2;
+    background-color: rgba(66, 45, 255, 0.623);
+    border-radius: 50%;
+}
 .linkGit a{
     text-decoration: none;
 }
 .topBar a span{
-    font-size: 25px;
+    font-size: 20px;
     color: rgb(78, 212, 0);
     margin: 10px;
 }
@@ -162,9 +166,15 @@ form:hover #search-input{
 }
 .voice{
     display: flex;
-    padding: 5px 15px;
+    padding: 7px 10px;
     color: #0b6bd2;
     font-size: 20px;
+    border-radius: 50%;
+    transition: all 0.2s ease-in;
+}
+.voice:hover{
+    background-color: #fcf3ff;
+
 }
 .contentAudio{
     display: flex;
@@ -180,7 +190,7 @@ form:hover #search-input{
 }
 .synonyms{
     color: #c90a5a;
-    font-size:20px;
+    font-size:18px;
     margin-bottom: 10px;
 }
 

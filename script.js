@@ -9,25 +9,35 @@ const getData = async () => {
   } else if (!inputData.match(pattern)) {
     document.querySelector(".err").innerHTML =
       "* Please provide only word avoid also spaces !";
-    return false;
-  } else {
+  }else {
     document.querySelector(".err").innerHTML = "";
     const URL = `https://api.dictionaryapi.dev/api/v2/entries/en/${inputData}`;
     let response = await fetch(URL);
     let data = await response.json();
     console.log(data);
+     if(inputData!==data && data.length> 0) {
+       document.querySelector(".err").innerHTML = ``;
+    }else{
+      document.querySelector(".err").innerHTML =`<h3 style="color:orange"> <span style="color:#ff6f3c;font-size:25px"><u>${inputData}</u></span> has no meanings found <i class="fa-solid fa-triangle-exclamation"></i></h3>`;
+    }
+
     document.querySelector(".userWord").innerText = data[0].word;
-    document.querySelector(".phonetic").innerText = `[ ${data[0].phonetic} ]`;
+    
+    const phoneticM = `${data[0].phonetic}`
+    const phonetic = document.querySelector(".phonetic");
+    if (phoneticM !=='undefined') {
+      phonetic.innerText = `[${phoneticM}]`;
+    } else {
+      phoneticM.innerText =  '';
+    }
 
     const synonyms = data[0].meanings[0].synonyms;
-    const elementSyno =  document.querySelector(".synonyms")
-    if (synonyms.length>0) {
-      elementSyno.textContent = `Synonyms: ${synonyms}`
-
-    } else{
-      elementSyno.textContent = 'Not found synonyms';
+    const elementSyno = document.querySelector(".synonyms");
+    if (synonyms.length > 0) {
+      elementSyno.textContent = `Synonyms: ${synonyms}`;
+    } else {
+      elementSyno.textContent = ``;
     }
-    console.log(synonyms);
 
     //  ---------------for audio voice ----start------------------
     const voiceAudio = data[0]?.phonetics[0]?.audio;

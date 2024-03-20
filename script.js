@@ -20,7 +20,7 @@ const getData = async () => {
     } else {
       document.querySelector(
         ".err"
-      ).innerHTML = `<h3 style="color:orange"> <span style="color:#ff6f3c;font-size:25px"><u>${inputData}</u></span>    has no meanings found <i class="fa-solid fa-triangle-exclamation"></i></h3>`;
+      ).innerHTML = `<h3 style="color:orange"> <span style="color:#ff6f3c;font-size:25px"><u>${inputData}</u></span> has no meanings found <i class="fa-solid fa-triangle-exclamation"></i></h3>`;
     }
 
     document.querySelector(".userWord").innerText = data[0].word;
@@ -91,7 +91,7 @@ const getData = async () => {
 };
 
 
-searchButton.addEventListener("click",(evnt) => {
+searchButton.addEventListener("click", (evnt) => {
   evnt.preventDefault();
 
   try {
